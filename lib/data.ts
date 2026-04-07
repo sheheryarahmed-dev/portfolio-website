@@ -2,9 +2,12 @@ import React from "react";
 import { CgWorkAlt } from "react-icons/cg";
 import { FaReact } from "react-icons/fa";
 import { LuGraduationCap } from "react-icons/lu";
-import corpcommentImg from "@/public/corpcomment.png";
-import rmtdevImg from "@/public/rmtdev.png";
-import wordanalyticsImg from "@/public/wordanalytics.png";
+import finalyearproject from "@/public/Visitor_Counting_Identification.jpeg";
+import iclerkproject from "@/public/iclerk-project.png";
+import cablineproject from "@/public/cabline-dashboard.webp";
+import genmarkproject from "@/public/Genmark-project.jpeg";
+import dropproject from "@/public/drop.jpeg";
+import iqracityproject from "@/public/iqracity.jpeg";
 
 export const links = [
   {
@@ -35,73 +38,168 @@ export const links = [
 
 export const experiencesData = [
   {
-    title: "Graduated bootcamp",
-    location: "Miami, FL",
+    title: "Bachelor of Science in Computer Science",
+    location: "Foundation University Islamabad, Pakistan",
     description:
-      "I graduated after 6 months of studying. I immediately found a job as a front-end developer.",
+    "Graduated with a Bachelor’s degree in Computer Science, achieving a CGPA of 3.72/4.0. Awarded a merit certificate for outstanding academic performance, ranking among the top 3 students in the department.",
     icon: React.createElement(LuGraduationCap),
-    date: "2019",
-  },
-  {
-    title: "Front-End Developer",
-    location: "Orlando, FL",
-    description:
-      "I worked as a front-end developer for 2 years in 1 job and 1 year in another job. I also upskilled to the full stack.",
-    icon: React.createElement(CgWorkAlt),
-    date: "2019 - 2021",
+    date: "2016 – 2020",
   },
   {
     title: "Full-Stack Developer",
-    location: "Houston, TX",
+    location: "KhasTech Solutions, Islamabad, Pakistan",
     description:
-      "I'm now a full-stack developer working as a freelancer. My stack includes React, Next.js, TypeScript, Tailwind, Prisma and MongoDB. I'm open to full-time opportunities.",
-    icon: React.createElement(FaReact),
-    date: "2021 - present",
+    "My role involved contributing to the development of secure and scalable web applications using Django, Jinja templates, and PostgreSQL. I implemented robust backend logic, designed efficient database schemas, and ensured reliable performance across the platform.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Aug 2020 – Dec 2020",
+  },
+  {
+    title: "Sr. Back-end Developer (Python/Django/FastAPI)",
+    location: "XIOTS LTD, Blackburn, United Kingdom",
+    description:
+      "My primary role involves developing secure, scalable backend systems using Python, Django, and FastAPI, while leading the development team, overseeing system architecture, and ensuring high-quality delivery. I also manage deployments on cloud platforms using Azure and Docker, maintaining reliable and efficient production environments.",
+    icon: React.createElement(CgWorkAlt),
+    date: "Jan 2021 – Present",
   },
 ] as const;
 
 export const projectsData = [
   {
-    title: "CorpComment",
+    title: "Multi-Tenant Modular Business Management System",
     description:
-      "I worked as a full-stack developer on this startup project for 2 years. Users can give public feedback to companies.",
-    tags: ["React", "Next.js", "MongoDB", "Tailwind", "Prisma"],
-    imageUrl: corpcommentImg,
+      "Enterprise-level multi-tenant platform with modular components: invoicing, cab booking, CRM, task management, restaurant management (inventory control), and voucher systems. Features real-time dashboards, EPOS integrations, waiter apps, and live table booking status.",
+    tags: [
+      "Python",
+      "Django",
+      "FastAPI",
+      "DRF",
+      "WebSockets",
+      "FCM",
+      "Stripe",
+      "Wise Bank API",
+      "iCabbi API",
+      "Autocab API",
+      "PostgreSQL",
+      "Microservices",
+      "Azure",
+      "Multi-tenant Database",
+      "Real-time Data Sync"
+    ],
+    imageUrl: iclerkproject,
   },
   {
-    title: "rmtDev",
+    title: "Taxi Dispatch Management System",
     description:
-      "Job board for remote developer jobs. I was the front-end developer. It has features like filtering, sorting and pagination.",
-    tags: ["React", "TypeScript", "Next.js", "Tailwind", "Redux"],
-    imageUrl: rmtdevImg,
+      "Multi-tenant taxi dispatch system managing bookings, addresses, vehicle assignments, driver management, dynamic tariff calculations, and zone-based routing with WebSocket integration.",
+    tags: [
+      "Python",
+      "FastAPI",
+      "Django",
+      "Redis",
+      "PubNub",
+      "JWT Authentication",
+      "Access Control",
+      "Stripe",
+      "OpenStreetMaps",
+      "PostgreSQL",
+      "SQLAlchemy"
+    ],
+    imageUrl: cablineproject,
   },
   {
-    title: "Word Analytics",
+    title: "Genmark - Generator Set Tracking Portal",
     description:
-      "A public web app for quick analytics on text. It shows word count, character count and social media post limits.",
-    tags: ["React", "Next.js", "SQL", "Tailwind", "Framer"],
-    imageUrl: wordanalyticsImg,
+      "Comprehensive portal for genset monitoring with subscription management, real-time tracking, user authorization, and a reporting dashboard.",
+    tags: [
+      "Python",
+      "DRF",
+      "Websockets",
+      "JWT Authentication",
+      "PostgreSQL",
+      "Role-based Access Control",
+      "Azure"
+    ],
+    imageUrl: genmarkproject,
+  },
+  {
+    title: "Multi-Vendor E-Commerce System for Restaurants",
+    description:
+      "Marketplace platform enabling multiple restaurant vendors to manage menus, orders, and customer relationships through a unified API backend.",
+    tags: [
+      "Python",
+      "Django",
+      "Django Oscar",
+      "Django Channels",
+      "Stripe API",
+      "JWT Authentication",
+      "PostgreSQL"
+    ],
+    imageUrl: dropproject,
+  },
+  {
+    title: "Online Learning Platform",
+    description:
+      "Virtual learning and meeting platform for schools and offices. Implemented role-based access for students and teams, with integrated video conferencing.",
+    tags: [
+      "Django",
+      "BigBlueButton Integration",
+      "RBAC"
+    ],
+    imageUrl: iqracityproject,
+  },
+  {
+    title: "Visitor Counting & Identification System",
+    description:
+      "Facial recognition-based system for automated visitor counting and identification with backend API for data processing and analytics.",
+    tags: [
+      "Python",
+      "Django",
+      "OpenCV",
+      "PostgreSQL",
+      "Machine Learning"
+    ],
+    imageUrl: finalyearproject,
   },
 ] as const;
 
 export const skillsData = [
+  "Python",
+  "Django",
+  "Django Rest Framework (DRF)",
+  "FastAPI",
+  "RESTful APIs",
+  "GraphQL",
+  "WebSockets",
+  "PostgreSQL",
+  "MySQL",
+  "ORM",
+  "Database Design",
+  "Query Optimization",
+  "Redis (Caching)",
+  "third-party API Integration",
+  "Stripe",
+  "Pubnub",
+  "Pusher",
+  "OpenStreetMaps",
+  "Firebase Cloud Messaging (FCM)",
+  "Multi-tenant Architecture",
+  "Monolithic Architecture",
+  "Modular Architecture",
+  "Microservices",
+  "Authentication & Authorization",
+  "JWT",
+  "Role-based Access Control (RBAC)",
   "HTML",
   "CSS",
   "JavaScript",
-  "TypeScript",
-  "React",
-  "Next.js",
-  "Node.js",
+  "ReactJs",
+  "Docker",
+  "Containerization",
+  "Azure",
+  "Heroku",
+  "Vercel",
+  "DNS Management",
   "Git",
-  "Tailwind",
-  "Prisma",
-  "MongoDB",
-  "Redux",
-  "GraphQL",
-  "Apollo",
-  "Express",
-  "PostgreSQL",
-  "Python",
-  "Django",
-  "Framer Motion",
+  "GitHub",
+  "Pytest",
 ] as const;
