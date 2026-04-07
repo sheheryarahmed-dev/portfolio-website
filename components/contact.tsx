@@ -4,7 +4,7 @@ import React from "react";
 import SectionHeading from "./section-heading";
 import { motion } from "framer-motion";
 import { useSectionInView } from "@/lib/hooks";
-import { sendEmail } from "@/actions/sendEmail";
+import emailjs from 'emailjs-com';
 import SubmitBtn from "./submit-btn";
 import toast from "react-hot-toast";
 
@@ -33,23 +33,40 @@ export default function Contact() {
 
       <p className="text-gray-700 -mt-6 dark:text-white/80">
         Please contact me directly at{" "}
-        <a className="underline" href="mailto:example@gmail.com">
-          example@gmail.com
+        <a className="underline" href="mailto:sheheryar.pk2@gmail.com">
+          sheheryar.pk2@gmail.com
         </a>{" "}
         or through this form.
       </p>
 
       <form
         className="mt-10 flex flex-col dark:text-black"
-        action={async (formData) => {
-          const { data, error } = await sendEmail(formData);
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const form = e.target as HTMLFormElement;
+          const senderEmail = (form.senderEmail as HTMLInputElement).value;
+          const message = (form.message as HTMLTextAreaElement).value;
 
-          if (error) {
-            toast.error(error);
+          if (!senderEmail || !message) {
+            toast.error("Please fill in all fields.");
             return;
           }
 
-          toast.success("Email sent successfully!");
+          try {
+            await emailjs.send(
+              process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+              process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
+              {
+                from_email: senderEmail,
+                message: message,
+              },
+              process.env.NEXT_PUBLIC_EMAILJS_USER_ID!
+            );
+            toast.success("Email sent successfully!");
+            form.reset();
+          } catch (error) {
+            toast.error("Failed to send email. Please try again later.");
+          }
         }}
       >
         <input
