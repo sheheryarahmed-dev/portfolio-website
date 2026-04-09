@@ -207,32 +207,36 @@ export const skillsData = [
   {
     category: "Backend Development",
     icon: "🚀",
-    skills: ["Python", "Django", "DRF", "FastAPI", "RESTful APIs", "GraphQL", "WebSockets"]
-  },
-  {
-    category: "Architecture & Security",
-    icon: "🏗️",
-    skills: ["Multi-tenant", "Microservices", "JWT", "RBAC", "Modular Architecture"]
+    skills: ["Python", "Django", "Django Rest Framework (DRF)", "FastAPI", "RESTful APIs", "GraphQL", "WebSockets"]
   },
   {
     category: "Databases",
     icon: "🗄️",
-    skills: ["PostgreSQL", "MySQL", "ORM", "Query Optimization"]
+    skills: ["PostgreSQL", "MySQL", "ORM", "Database Design", "Query Optimization"]
+  },
+  {
+    category: "Architecture & Security",
+    icon: "🏗️",
+    skills: ["Multi-tenant Architecture", "Monolithic Architecture", "Modular Architecture", "Microservices", "Authentication & Authorization", "JWT", "Role-based Access Control"]
   },
   {
     category: "DevOps & Cloud",
     icon: "☁️",
-    skills: ["Docker", "Azure", "Vercel", "Kubernetes", "Git"]
+    skills: ["Docker", "Containerization", "Azure", "Heroku", "Vercel", "Kubernetes"]
   },
   {
-    category: "Caching & Performance",
-    icon: "⚡",
-    description: "Proficient in utilizing Redis as a high-speed data store for accelerating query response times.",
-    skills: ["Redis (Caching)"]
+    category: "Integrations & Services",
+    icon: "🔗",
+    skills: ["Third-party API Integration", "Stripe", "PubNub", "Pusher", "OpenStreetMaps", "Firebase Cloud Messaging (FCM)"]
   },
   {
     category: "Frontend Development",
     icon: "🎨",
     skills: ["HTML", "CSS", "JavaScript", "ReactJS"]
+  },
+  {
+    category: "Tools & Testing",
+    icon: "🛠️",
+    skills: ["Git", "GitHub", "Redis", "Pytest"]
   }
 ];
