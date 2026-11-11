@@ -1,6 +1,6 @@
 # Sheheryar Ahmed — Portfolio
 
-A production-oriented foundation for Sheheryar Ahmed's personal portfolio. This repository is currently **Phase 1: project architecture and setup**. The homepage is intentionally a small setup placeholder; portfolio sections and contact submission are not implemented yet.
+A production-oriented foundation for Sheheryar Ahmed's personal portfolio. All portfolio sections and the footer are implemented. Contact delivery requires the environment configuration below.
 
 ## Technology
 
@@ -8,8 +8,8 @@ A production-oriented foundation for Sheheryar Ahmed's personal portfolio. This 
 - TypeScript with strict checking
 - Tailwind CSS v4
 - Motion and Lucide React for future UI work
-- Zod and React Hook Form for future form validation
-- Resend for future email delivery
+- Zod and React Hook Form for contact validation
+- Resend for contact email delivery
 - ESLint and Prettier
 - npm
 
@@ -17,7 +17,7 @@ A production-oriented foundation for Sheheryar Ahmed's personal portfolio. This 
 
 ```text
 public/
-  cv/                 Reserved for a future CV file
+  cv/                 Centralized download path; add the CV PDF here
   fonts/
   images/
     logos/
@@ -31,13 +31,23 @@ src/
   types/              Shared TypeScript interfaces
 ```
 
-Portfolio section components, navigation UI, and footer UI are deliberately deferred to later phases. The project and biography data collections are empty until verified content is provided.
+Section components live in `src/components/sections/`. Project content is centralized in `src/data/projects.ts`. Projects currently includes five supplied projects with no temporary placeholders. No project links are displayed until verified destinations are supplied.
+
+The carousel shows three cards on desktop, two on tablet, and one on mobile. Arrow and pagination controls, native touch scrolling, keyboard scrolling, and reduced-motion preferences are supported. The shared `NavyWave` component preserves the approved Hero-to-About contour and repeats it before Projects and Experience.
+
+Experience uses the approved reference's employment details, centralized in `src/data/experience.ts`, without stale duration totals. Company initials stand in for logos until approved logo assets are supplied.
+
+Skills uses the seven categories and technology chips from the approved reference, centralized in `src/data/skills.ts`. Cards form three columns followed by four on wide screens, two columns on tablets, and one on mobile. Its wave and background transition match the earlier sections.
 
 ## Master visual reference
 
-The supplied full-page portfolio image is the visual source of truth for future sections. It establishes a deep navy-to-blue background with subtle wave-shaped section transitions, warm cream typography, and selective coral-red highlights. Keep its compact, confident sans-serif type hierarchy, consistent content alignment, fine navy borders, softly layered rounded cards, and restrained shadows and motion.
+The supplied full-page portfolio image is the visual source of truth for future sections. Use the approved solid deep navy page background (`#14213D`), lighter navy panels (`#192A45`), and card navy (`#223653`) for depth, with subtle wave-shaped section transitions, warm cream typography, and selective coral highlights. Keep its compact, confident sans-serif type hierarchy, consistent content alignment, fine navy borders, softly layered rounded cards, and restrained shadows and motion.
+
+The decorative code editor uses `#192A45` for its background, `#344762` for its border, `#C9C1B3` for line numbers, `#F4EDE0` for code, and `#FF6B5B` for syntax highlights and its icon badge. Its window dots are coral (`#FF6B5B`), yellow (`#FBBF24`), and green (`#22C55E`); yellow and green are reserved for these controls, not additional portfolio accents.
 
 Use the shared CSS variables in `src/app/globals.css` and the reusable primitives in `src/components/ui/` rather than introducing section-specific colors or card treatments. Maintain the reference's wide-screen two-column layouts where suitable and collapse them into a readable single column on smaller screens. Implement only the section in scope for each approved phase; do not reproduce the full reference page ahead of those requests.
+
+The shared navigation and Hero container has a 1520px maximum width, with 48px desktop gutters increasing to 64px on large screens. The desktop Hero uses a content-driven height and a separate transparent portrait and coral SVG; do not apply fades or overlays to the portrait.
 
 ## Prerequisites
 
@@ -53,7 +63,23 @@ cp .env.example .env.local
 
 Set `NEXT_PUBLIC_SITE_URL` in `.env.local` to the canonical deployed URL before deployment. For local development, it may be left blank; the site uses `http://localhost:3000` as its metadata base.
 
-Contact integration variables in `.env.example` are reserved for later phases. Do not put secret values in variables prefixed with `NEXT_PUBLIC_`; do not commit `.env.local`.
+Configure contact integration variables from `.env.example` in `.env.local` or your deployment environment. Do not put secret values in variables prefixed with `NEXT_PUBLIC_`; do not commit `.env.local`.
+
+### Contact setup
+
+- `NEXT_PUBLIC_SITE_URL`: exact public site origin (including scheme); use `http://localhost:3000` for local testing.
+- `RESEND_API_KEY`: server-only Resend key.
+- `CONTACT_EMAIL_FROM`: plain email address on a verified Resend sender domain.
+- `CONTACT_EMAIL_TO`: recipient email address.
+- `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`: matching Cloudflare Turnstile keys. Configure allowed production hostnames in Cloudflare; use a separate development widget/key pair for localhost.
+
+Restart/rebuild after configuring variables. The form is explicitly disabled when configuration is absent. The recipient and sender are never accepted from client input. Mail uses plain text, a fixed subject, and the visitor's validated address as reply-to.
+
+Verify a real submission on the configured deployment and confirm receipt before publishing. Turnstile test keys may be used for development only; never use always-pass test keys in production. Rate limiting is intentionally deferred at the user's request; Turnstile and same-origin checks are not a substitute for rate limiting.
+
+Run `node --test tests/contact.test.mjs` for isolated contact pipeline tests. They transpile the actual handlers with the installed TypeScript compiler and mock Turnstile/Resend; no real messages or credentials are used.
+
+The header and About Download CV buttons use the centralized path `/cv/SheheryarAhmed_SoftwareEngineer.pdf`, served from `public/cv/SheheryarAhmed_SoftwareEngineer.pdf`.
 
 ## Local development
 
@@ -81,7 +107,7 @@ Metadata, canonical URL, Open Graph/Twitter cards, the generated Open Graph imag
 
 The npm override keeps the TypeScript ESLint parser's `minimatch` dependency on a patched 11.x release while the upstream dependency range catches up.
 
-The contact API currently documents its future JSON request fields (`name`, `email`, `message`, `turnstileToken`) and returns HTTP 501 until the feature is implemented. Its Zod schema and email, Turnstile, and rate-limit type contracts are preparation only; no email is sent and no rate-limit or Turnstile service is active.
+The contact API validates JSON fields (`name`, `email`, `message`, `turnstileToken`) with Zod, rejects cross-origin requests, caps request bodies at 32 KiB, and verifies Turnstile success, hostname, and the `contact` action before sending through Resend. Invalid requests receive safe 4xx responses; missing configuration returns 503 and provider failures return 502 without exposing credentials or provider details. Success means Resend accepted the message, not a guarantee of inbox delivery.
 
 ## Build and deployment
 
@@ -92,7 +118,7 @@ npm run format:check
 npm run build
 ```
 
-Deploy to Vercel using the repository's supported Node.js runtime and set the canonical `NEXT_PUBLIC_SITE_URL` in the deployment environment. Add only the contact integration secrets that are needed when that feature is implemented.
+Deploy to Vercel using the repository's supported Node.js runtime and configure the site origin and contact variables above.
 
 ## Conventions
 
@@ -104,13 +130,13 @@ Deploy to Vercel using the repository's supported Node.js runtime and set the ca
 
 ## Roadmap
 
-1. Project architecture and configuration (current phase)
-2. Header and Hero
-3. About
-4. Projects
-5. Experience
-6. Technical Skills
-7. Education and Achievements
-8. Contact
-9. Footer
+1. Project architecture and configuration (complete)
+2. Header and Hero (complete)
+3. About (complete)
+4. Projects (implemented; remaining real project content pending)
+5. Experience (implemented from approved reference)
+6. Technical Skills (implemented from approved reference)
+7. Education and Achievements (implemented from approved reference)
+8. Contact (implemented; live delivery requires configuration and verification)
+9. Footer (implemented using centralized name and contact links)
 10. SEO, accessibility, performance optimization, and final testing
