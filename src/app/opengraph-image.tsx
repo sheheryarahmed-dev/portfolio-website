@@ -13,8 +13,8 @@ export default function OpenGraphImage() {
     <div
       style={{
         alignItems: "center",
-        background: "#031A32",
-        color: "#F5F2EC",
+        background: "#14213D",
+        color: "#F4EDE0",
         display: "flex",
         height: "100%",
         padding: "80px",
@@ -24,7 +24,7 @@ export default function OpenGraphImage() {
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <div
           style={{
-            color: "#FF523D",
+            color: "#FF6B5B",
             fontSize: 24,
             fontWeight: 600,
             letterSpacing: 2,
@@ -35,7 +35,7 @@ export default function OpenGraphImage() {
         <div style={{ fontSize: 68, fontWeight: 700 }}>
           {siteConfig.person.name}
         </div>
-        <div style={{ color: "#C6CFDA", fontSize: 32 }}>
+        <div style={{ color: "#C9C1B3", fontSize: 32 }}>
           {siteConfig.person.title}
         </div>
       </div>

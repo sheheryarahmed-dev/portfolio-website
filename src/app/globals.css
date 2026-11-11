@@ -2,14 +2,16 @@
 
 :root {
   color-scheme: dark;
-  --navy: #031a32;
-  --navy-secondary: #08213b;
-  --navy-card: #102d49;
-  --cream: #f5f2ec;
-  --coral: #ff523d;
-  --cream-muted: #c6cfda;
-  --navy-border: #28435e;
-  --navy-wave: #061f39;
+  --navy: #14213d;
+  --navy-secondary: #192a45;
+  --navy-card: #223653;
+  --cream: #f4ede0;
+  --coral: #ff6b5b;
+  --cream-muted: #c9c1b3;
+  --navy-border: #344762;
+  --navy-wave: #192a45;
+  --editor-window-yellow: #fbbf24;
+  --editor-window-green: #22c55e;
   --section-space: clamp(3.5rem, 7vw, 5.5rem);
   --card-radius: 0.875rem;
 }
@@ -23,6 +25,8 @@
   --color-cream-muted: var(--cream-muted);
   --color-navy-border: var(--navy-border);
   --color-navy-wave: var(--navy-wave);
+  --color-editor-window-yellow: var(--editor-window-yellow);
+  --color-editor-window-green: var(--editor-window-green);
   --radius-card: var(--card-radius);
   --spacing-section: var(--section-space);
   --text-display: clamp(2.25rem, 5vw, 3.25rem);
@@ -40,16 +44,13 @@ html {
   min-height: 100%;
   background: var(--navy);
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
   min-height: 100vh;
   margin: 0;
-  background: linear-gradient(
-    180deg,
-    var(--navy) 0%,
-    var(--navy-secondary) 100%
-  );
+  background: var(--navy);
   color: var(--cream);
   font-family: var(--font-geist-sans), sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -71,5 +72,8 @@ body {
   *::before,
   *::after {
     scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
