@@ -15,7 +15,7 @@ export function Card({
 
   return (
     <div
-      className={`rounded-card border-navy-border bg-navy-card/80 shadow-navy/20 border p-5 shadow-sm ${hoverClasses} ${className}`}
+      className={`rounded-card border-navy-border bg-navy-card shadow-navy/20 border p-5 shadow-sm ${hoverClasses} ${className}`}
       {...props}
     />
   );
