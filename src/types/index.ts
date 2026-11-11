@@ -14,21 +14,52 @@ export interface SocialLink {
   href: string;
 }
 
+export interface HeroStatistic {
+  value: string;
+  label: string;
+  icon: "calendar" | "layers" | "code";
+}
+
+export interface AboutExpertise {
+  title: string;
+  description: string;
+  icon: "activity" | "layers" | "code" | "cloud";
+}
+
 export interface SiteConfig {
   url: string;
   person: Person;
+  hero: {
+    availability: string;
+    description: string;
+    technologies: string[];
+    statistics: HeroStatistic[];
+  };
+  about: {
+    heading: string;
+    highlightedText: string;
+    introduction: string;
+    specialization: string;
+    experience: string;
+    expertise: AboutExpertise[];
+    focus: string[];
+  };
   navigation: NavigationItem[];
   contact: {
     email?: string;
     location?: string;
+    phone?: string;
+    linkedinUrl?: string;
   };
   socialLinks: SocialLink[];
-  cvPath?: string;
+  githubUrl: string;
+  cvPath: string;
 }
 
 export interface Project {
   slug: string;
   name: string;
+  category: string;
   description: string;
   technologies: string[];
   href?: string;
@@ -50,6 +81,8 @@ export interface Role {
 
 export interface Company {
   name: string;
+  startDate?: string;
+  endDate?: string;
   location?: string;
   website?: string;
   roles: Role[];
