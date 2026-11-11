@@ -133,7 +133,7 @@ export function Hero() {
         <div className="relative isolate z-10 mx-auto aspect-[1280/1229] w-full max-w-[27rem] translate-y-4 sm:translate-y-6 xl:mx-0 xl:aspect-auto xl:max-w-none xl:translate-y-10">
           <svg
             aria-hidden="true"
-            className="text-coral absolute top-0 left-0 z-0 h-full w-full xl:top-[12%] xl:h-[90%]"
+            className="text-coral absolute top-4 left-0 z-0 h-full w-full xl:top-[calc(12%+1rem)] xl:h-[90%]"
             preserveAspectRatio="none"
             viewBox="0 0 540 560"
           >
