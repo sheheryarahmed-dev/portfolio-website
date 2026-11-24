@@ -6,7 +6,7 @@ export const experience = [
     startDate: "Jan 2021",
     roles: [
       {
-        title: "Development Team Lead",
+        title: "Senior Software Engineer | Team Lead",
         startDate: "Jan 2024",
         location: "Islamabad, Pakistan (Hybrid)",
         achievements: [
@@ -16,7 +16,7 @@ export const experience = [
         ],
       },
       {
-        title: "Sr. Backend Developer",
+        title: "Senior Backend Engineer",
         startDate: "Jan 2023",
         endDate: "Dec 2023",
         location: "Islamabad, Pakistan",
@@ -26,13 +26,17 @@ export const experience = [
         ],
       },
       {
-        title: "Python/Django Developer",
+        title: "Backend Engineer",
         startDate: "Jan 2021",
         endDate: "Dec 2022",
         location: "Islamabad, Pakistan (On-site)",
         achievements: [
-          "Built backend systems using Django for web and API-based applications.",
-          "Designed database schemas and implemented core business logic.",
+          "Contributed significantly to a multi-tenant e-commerce platform by adapting and extending Django Oscar to support multi-tenant architecture.",
+          "Developed REST APIs using Django REST Framework for multiple applications, including the admin dashboard, vendor dashboard, customer website, and rider app.",
+          "Implemented real-time order and rider location tracking using Django Channels, enabling live updates in the rider application.",
+          "Implemented JWT authentication and role-based access control using user groups to manage permissions across different portals.",
+          "Collaborated with management to clarify requirements and translate business needs into backend functionality.",
+          "Managed application deployments on Heroku.",
         ],
       },
     ],
@@ -48,8 +52,8 @@ export const experience = [
         endDate: "Dec 2020",
         location: "Islamabad, Pakistan",
         achievements: [
-          "Web application development and feature implementation.",
-          "Contributed to research and development initiatives within the company.",
+          "Contributed to the development of an online learning platform using Django, implemented backend functionality and application features.",
+          "Implemented authentication and role-based access control (RBAC) to manage user permissions and secure access to platform features",
         ],
       },
       {
