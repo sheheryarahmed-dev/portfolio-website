@@ -41,7 +41,7 @@ export const skills = [
     category: "DevOps & Cloud",
     skills: [
       "Docker",
-      "Containerization",
+      "Github Actions",
       "Azure",
       "Heroku",
       "Vercel",
